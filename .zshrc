@@ -30,7 +30,7 @@ ZSH_THEME="agnoster"
 # DISABLE_CORRECTION="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
- COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment following line if you want to disable marking untracked files under
 # VCS as dirty. This makes repository status check for large repositories much,
@@ -40,6 +40,8 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 plugins=(git git-extras osx ruby )
@@ -48,15 +50,32 @@ source $ZSH/oh-my-zsh.sh
 export TERM="xterm-256color"
 export LOCAL="/usr/local/bin"
 export PATH=$LOCAL:$PATH
-export PATH=$HOME/.rbenv/bin:$PATH
+#export PATH=$HOME/.rbenv/bin:$PATH
 export PATH=${PATH}:/Users/ramseykail/Documents/Dev/android-sdk-macosx/platform-tools
-export PATH=${PATH}:/usr/local/Cellar
-eval "$(rbenv init -)"
+export PATH=${PATH}:/usr/local/Cellar 
+export PATH="/usr/local/sbin:$PATH"
+export PATH=/usr/local/opt/python/libexec/bin:$PATH
+# Initialize rbenv
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#eval "$(rbenv init -)"
 #alias ssh='TERM=xterm ssh'
-alias edit="mvim $1"
+source /usr/local/Cellar/zsh-syntax-highlighting/0.6.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#autoload -U run-help
+#autoload run-help-git
+#autoload run-help-svn
+#autoload run-help-svk
+#unalias run-help
+alias help=run-help
+alias edit="vim $1"
 alias godoc="cd ~/Documents"
 alias godev="cd ~/Documents/Dev"
-alias gotmux="tmuxgo.sh"
-alias killz='tmux kill-session'
-DEFAULT_USER=ramseykail
-
+alias fhere="find . -name "
+alias histg="history | grep"
+alias top="htop"
+alias cl="clear"
+alias myip="curl http://ipecho.net/plain; echo"
+DEFAULT_USER='Ramsey'
+# change prompt
+prompt_context() {
+  prompt_segment black default  "  🤖  "
+}
