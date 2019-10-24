@@ -1,0 +1,33 @@
+[user]
+	name = Ramsey Kail
+	email = Ramsey.Kail@airship.com
+[core]
+	autocrlf = input
+	safecrlf = true
+	excludesfile = /Users/ramseykail/.gitignore_global
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[color "status"]
+  changed = blue
+  added = green
+  untracked = red
+  [alias]
+co = checkout
+ci = commit
+rb = rebase
+sync = !git pull --rebase && git push
+com = !git add . && git commit -am
+br = branch
+hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+type = cat-file -t
+dump = cat-file -p
+[push]
+	default = simple
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
