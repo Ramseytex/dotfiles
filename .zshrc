@@ -40,11 +40,10 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
-plugins=(git git-extras osx ruby )
+plugins=(encode64 git git-extras osx ruby alias-finder xcode virtualenv)
 source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export TERM="xterm-256color"
@@ -74,7 +73,7 @@ alias histg="history | grep"
 alias top="htop"
 alias cl="clear"
 alias myip="curl http://ipecho.net/plain; echo"
-DEFAULT_USER='Ramsey'
+#DEFAULT_USER='Ramsey'
 # change prompt
 prompt_context() {
   prompt_segment black default  "  🤖  "
